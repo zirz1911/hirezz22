@@ -1,0 +1,52 @@
+{% extends 'layout_other.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container" style="padding-top: 20px">
+    <a href="/addPost" class="btn btn-primary btn-outline-light" style="float: right">&nbsp;&nbsp;&nbsp; New Post &nbsp;&nbsp;&nbsp;</a><br><br>
+    <div class="row">
+
+        {% for p in post %}
+            <div class="col">
+
+            <div class="card text-center bg-secondary" style="color: white; width: 80%" >
+              <div class="card-header">
+                  <b>{{ p.topic }}</b>
+              </div>
+              <div class="card-body">
+                  {% if p.image %}
+                    <td>
+                        <img class="card-img-top" src="{{ p.image.url }}" alt="Card image" style="width: 100%">
+                    </td>
+                  {% else %}
+                    <td>
+                        <img class="card-img-top" src="{% static 'images/naga.jpg' %}" alt="Card image" style="width: 20%">
+                    </td>
+                  {% endif %}
+                <p class="card-text" style="font-size: 16px">
+                {{ p.description|safe }}
+                </p>
+                <a href="{% url 'selectPost' p.p_id%}" class="btn btn-primary bg-dark btn-outline-light">More Detail</a>
+              </div>
+            </div>
+
+
+                {% if p.name == "Something else" %}
+                {% endif %}
+
+            {% if forloop.counter|divisibleby:3 %}
+                </div></div><div class="row"><div class="col-12"><hr></div>
+            {% elif forloop.counter|divisibleby:3 %}
+            </div></div><div class="row"><div class="col-12"><hr></div>
+            {% else %}
+            </div>
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+    </div>
+
+
+{% endblock %}
+

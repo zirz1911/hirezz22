@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    {% if form.errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use href="#exclamation-triangle-fill"/></svg>
+            <b>Can't create an account. (duplicate username, password not match, password too common)</b>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    {% endif %}
+
+    <div class="shadow p-4 mb-5 bg-body rounded">
+    <h1>Register</h1><br>
+    <form action="{% url 'register_user' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+<br><br>
+          <button type="submit" class="btn btn-dark" style="margin-bottom: 20px">Register</button>
+
+
+
+    </form>
+    </div>
+{% endblock %}

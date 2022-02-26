@@ -1,0 +1,17 @@
+{% extends 'layout_other.html' %}
+{% load static %}
+
+{% block content %}
+<h3 class="bg-secondary" style="color: white">New User</h3>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.media }}
+            {{ form.as_p }}
+        </div><br>
+        <button type="submit" class="btn btn-danger" style="float: right; margin-left: 5px" onclick="location.href='{% url 'postPage' %}'">Cancel</button>
+        <button type="submit" class="btn btn-primary" style="float: right; padding-left: 40px; padding-right: 40px">Create</button><br><br>
+
+    </form>
+
+{% endblock content %}
