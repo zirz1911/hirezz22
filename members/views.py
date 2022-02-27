@@ -13,23 +13,19 @@ def index(request):
     return render(request, 'index.html')
 
 
-def workList(request):
-    return render(request, 'workList.html')
-
-
 # ----------------------------------------------------------------- POST PAGE ------------------------------------------------------------------
 
 
 def postPage(request):  # show
     post = Item.objects.all()
     context = {'post': post}
-    return render(request, 'postPage.html', context)
+    return render(request, 'post/postPage.html', context)
 
 
 def selectPost(request, myUser):  # Select One
     context = {}
     context["po"] = Item.objects.get(myUser=myUser)
-    return render(request, 'postSelect.html', context)
+    return render(request, 'post/postSelect.html', context)
 
 
 def addPost(request):  # Add Post
@@ -42,7 +38,7 @@ def addPost(request):  # Add Post
     else:
         newForm = PostFormCreate()
 
-        return render(request, 'AddPost.html', {'form': newForm})
+        return render(request, 'post/AddPost.html', {'form': newForm})
 
 
 def updatePost(request, myUser):
@@ -54,7 +50,7 @@ def updatePost(request, myUser):
             updateForm.save()
         return redirect('postPage')
     else:
-        return render(request, 'updatePost.html', {'form': updateForm, 'object': object})
+        return render(request, 'post/updatePost.html', {'form': updateForm, 'object': object})
 
 
 def updatePostPicture(request, myUser):
@@ -66,7 +62,7 @@ def updatePostPicture(request, myUser):
             updateForm.save()
         return redirect('postPage')
     else:
-        return render(request, 'updatePostPic.html', {'form': updateForm, 'object': object})
+        return render(request, 'post/updatePostPic.html', {'form': updateForm, 'object': object})
 
 
 def deletePost(request, myUser):
@@ -75,7 +71,7 @@ def deletePost(request, myUser):
         post.delete()
         return redirect('postPage')
     else:
-        return render(request, "deletePost.html", {'post': post})
+        return render(request, "post/deletePost.html", {'post': post})
 
 # ----------------------------------------------------------------- POST PAGE -----------------------------------------------------------------------
 
@@ -95,7 +91,7 @@ def login_user(request):
             messages.success(request, "An error to login. Please try again...")
             return redirect('login')
 
-    return render(request, 'login.html', {})
+    return render(request, 'user/login.html', {})
 
 
 def logout_user(request):
@@ -117,7 +113,7 @@ def register_user(request):
             return redirect('index')
     else:
         form = RegisterUserForm()
-    return render(request, 'register_user.html', {'form': form, })
+    return render(request, 'user/register_user.html', {'form': form, })
 
 
 # ----------------------------------------------------------------- LOGIN / LOGOUT ------------------------------------------------------------------
@@ -126,4 +122,4 @@ def register_user(request):
 def userProfileShow(request):
     post = myUser.objects.all()
     context = {'post': post}
-    return render(request, 'userProfile.html', context)
+    return render(request, 'user/userProfile.html', context)
