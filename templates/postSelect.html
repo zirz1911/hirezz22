@@ -3,6 +3,7 @@
 
 {% block content %}
     <p style="padding-top: 100px"></p>
+    {% if user.is_authenticated %}
     <H1><b>{{ po.topic }}</b></H1>
 
     <center>
@@ -60,4 +61,13 @@
         <a href="{{ po.contactTw }}" target="_blank"><img src="{% static 'images/icontwitter.png' %}" width="5%"></a>
         <a href="mailto: {{ po.contactEmail }}" target="_blank"><img src="{% static 'images/iconemail.png' %}" width="5%"></a>
         <a href="{{ po.contactOther }}" target="_blank"><img src="{% static 'images/window-othe.png' %}" width="5%"></a><br><br>
+
+    {% else %}
+        <div class="alert alert-warning d-flex align-items-center" role="alert" style="margin-top: 10px">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use href="#exclamation-triangle-fill"/></svg>
+                <div>
+                    <a style="font-size: 20px">Must be logged in to see this page...</a>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

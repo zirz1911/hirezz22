@@ -6,12 +6,13 @@
     <title>HireTeeNee - Freelance Service</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/grid-image.css' %}">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
 </head>
 <body style="background-color: #f3f3f3; opacity: 100%; padding-bottom: 0px">
 
     <!-- ส่วน Menu -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3 bg-secondary">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3 bg-dark ">
       <div class="container">
         <a class="navbar-brand" href="#">HireTeeNee</a>
         <button
@@ -29,25 +30,27 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <div class="mx-auto"></div>
           <ul class="navbar-nav">
-            <li class="btn-outline-dark">
+            <li class="btn-outline-secondary">
               <a class="nav-link text-white" href="/index"><i class="fa fa-home"></i> Home</a>
             </li>
-            <li class="btn-outline-dark">
+            <li class="btn-outline-secondary">
               <a class="nav-link text-white" href="/postPage"><i class="fa fa-list"></i> Post</a>
             </li>
-            <li class="btn-outline-dark">
-              <a class="nav-link text-white" href="#"><i class="fa fa-user"></i> User</a>
-            </li>
-            <li class="btn-outline-dark">
-              <a class="nav-link text-white" href="/addPost"><i class="fa fa-contact-book"></i> Contact</a>
+
+            <li class="btn-outline-secondary">
+              <a class="nav-link text-white" href="#"><i class="fa fa-contact-book"></i> Contact</a>
             </li>
 
             {% if user.is_authenticated %}
-                <li class="btn-outline-dark">
+                <li class="btn-outline-secondary">
+                  <a class="nav-link text-white" href="/userProfileShow"><i class="fa fa-user"></i> Profile</a>
+                </li>
+
+                <li class="btn-outline-secondary">
                   <a class="nav-link text-white" href="{% url 'logout' %}">Sign Out</a>
                 </li>
             {% else %}
-                <li class="btn-outline-dark">
+                <li class="btn-outline-secondary">
                   <a class="nav-link text-white" href="{% url 'login' %}">Sign In</a>
                 </li>
 
@@ -101,6 +104,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-
+    <p style="padding-bottom: 20px"></p>
 </body>
 </html>

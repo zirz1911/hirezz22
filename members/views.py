@@ -17,19 +17,22 @@ def workList(request):
     return render(request, 'workList.html')
 
 
-def postPage(request):
+# ----------------------------------------------------------------- POST PAGE ------------------------------------------------------------------
+
+
+def postPage(request):  # show
     post = Item.objects.all()
     context = {'post': post}
     return render(request, 'postPage.html', context)
 
 
-def selectPost(request, p_id):
+def selectPost(request, p_id):  # Select One
     context = {}
     context["po"] = Item.objects.get(p_id=p_id)
     return render(request, 'postSelect.html', context)
 
 
-def addPost(request):
+def addPost(request):  # Add Post
     if request.method == "POST":
         newForm = PostFormCreate(request.POST, request.FILES)
         if newForm.is_valid():
@@ -40,6 +43,11 @@ def addPost(request):
         newForm = PostFormCreate()
 
         return render(request, 'AddPost.html', {'form': newForm})
+
+
+# ----------------------------------------------------------------- POST PAGE -----------------------------------------------------------------------
+
+# ----------------------------------------------------------------- LOGIN / LOGOUT ------------------------------------------------------------------
 
 
 def login_user(request):
@@ -80,6 +88,10 @@ def register_user(request):
     return render(request, 'register_user.html', {'form': form, })
 
 
+# ----------------------------------------------------------------- LOGIN / LOGOUT ------------------------------------------------------------------
 
 
-
+def userProfileShow(request):
+    post = myUser.objects.all()
+    context = {'post': post}
+    return render(request, 'userProfile.html', context)
