@@ -38,7 +38,7 @@ class MyUserManager(BaseUserManager):
 
 
 class myUser(AbstractBaseUser):
-    user_id = models.CharField(verbose_name="user_id", max_length=50, unique=True)
+    user_id = models.CharField(verbose_name="user_id", max_length=50, unique=True, primary_key=True)
     user_name = models.CharField(verbose_name="user name", max_length=100)
     user_lastname = models.CharField(verbose_name="user lastname", max_length=100)
     user_email = models.EmailField(verbose_name="user email", max_length=100)
@@ -58,7 +58,7 @@ class myUser(AbstractBaseUser):
     objects = MyUserManager()
 
     def __str__(self):
-        return self.user_name
+        return self.user_id
 
     def has_perm(self, perm, obj=None):
         return True
@@ -76,6 +76,7 @@ class Item(models.Model):
     contactTw = models.TextField(max_length=100, null=True)
     contactEmail = models.TextField(max_length=100, null=True)
     contactOther = models.TextField(max_length=100, null=True)
+    myUser = models.ForeignKey(myUser, on_delete=models.CASCADE, default="")
     image = models.ImageField(upload_to="uploads/", null=True, blank=True)
     image2 = models.ImageField(upload_to="uploads/", null=True, blank=True)
     image3 = models.ImageField(upload_to="uploads/", null=True, blank=True)

@@ -1,10 +1,12 @@
-{% extends 'layout.html' %}
+{% extends 'layout_other.html' %}
 {% load static %}
 
 {% block content %}
-
 {% if user.is_authenticated %}
-<h3 class="bg-secondary" style="color: white">New Post</h3>
+{% if user == object.myUser %}
+
+<h3 class="bg-secondary" style="color: white">Update Post</h3>
+
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
@@ -13,16 +15,13 @@
         </div><br>
         <button type="submit" class="btn btn-danger" style="float: right; margin-left: 5px" onclick="location.href='{% url 'postPage' %}'">Cancel</button>
         <button type="submit" class="btn btn-primary" style="float: right; padding-left: 40px; padding-right: 40px">Post</button><br><br>
+{% else %}
+        <h2>Access Denied!</h2>
+        <p>Only {{ object.myUser }} can update this post.</p>
+        Logged In User: {{ user.user_id }}<br>
+        Post Manager: {{ object.myUser }}
 
     </form>
-
-    {% else %}
-        <div class="alert alert-warning d-flex align-items-center" role="alert" style="margin-top: 10px">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use href="#exclamation-triangle-fill"/></svg>
-                <div>
-                    <a style="font-size: 20px">Must be logged in to see this page...</a>
-            </div>
-        </div>
-
+{% endif %}
 {% endif %}
 {% endblock content %}

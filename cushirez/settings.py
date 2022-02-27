@@ -41,6 +41,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'cushirez.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

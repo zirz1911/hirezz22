@@ -12,8 +12,11 @@ urlpatterns = [
     path('register_user', views.register_user, name='register_user'),
     path('workList', views.workList, name='workList'),
     path('addPost', views.addPost, name='addPost'),
+    path('<myUser>/updatePost', views.updatePost, name='updatePost'),
+    path('<myUser>/deletePost', views.deletePost, name='deletePost'),
+    path('<myUser>/updatePostPicture', views.updatePostPicture, name='updatePostPicture'),
     path('postPage', views.postPage, name='postPage'),
-    path('<p_id>/selectPost', views.selectPost, name='selectPost'),
+    path('<myUser>/selectPost', views.selectPost, name='selectPost'),
     path('userProfileShow', views.userProfileShow, name='userProfileShow'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

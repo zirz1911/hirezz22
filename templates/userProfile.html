@@ -8,9 +8,6 @@
 
         {% if user.user_profile %}
 
-        <div class="row">
-            <div class="column">
-
                 <div class="card bg-light shadow rounded" style="color: black; width: 215px; height: 230px;" >
                 <div class="card-body">
                     <td>
@@ -20,22 +17,16 @@
                     <td>
                     <img class="card-img-top" src="{% static 'images/naga.jpg' %}" alt="Card image" style="width: 20%; ">
                     </td>
-                </div>
-                </div>
-
-            </div>
         {% endif %} <!-- User Profile -->
+                </div>
+                </div>
 
-            <div class="column">
-                <a>{{ user.user_id }}</a>
+                <h2 class="text-uppercase">{{ user.user_id }}</h2>
                 {% if user.is_admin == False %}
                     <a>User</a>
                 {% else %}
                     <b style="color: #0fff3a">Admin</b>
                 {% endif %}
-            </div>
-        </div>
-
 
     {% endif %} <!-- user.is_authenticated -->
 

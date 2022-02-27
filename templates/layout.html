@@ -43,15 +43,15 @@
 
             {% if user.is_authenticated %}
                 <li class="btn-outline-secondary">
-                  <a class="nav-link text-white" href="/userProfileShow"><i class="fa fa-user"></i> Profile</a>
+                  <a class="nav-link text-white" href="/userProfileShow"><i class="fa fa-user"></i> Profile: {{ user.user_id }}<img src="{% static 'images/online.jpg' %}" style="width: 10px; height: 10px; alignment: right"></a>
                 </li>
 
                 <li class="btn-outline-secondary">
-                  <a class="nav-link text-white" href="{% url 'logout' %}">Sign Out</a>
+                  <a class="nav-link text-white" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Sign Out</a>
                 </li>
             {% else %}
                 <li class="btn-outline-secondary">
-                  <a class="nav-link text-white" href="{% url 'login' %}">Sign In</a>
+                  <a class="nav-link text-white" href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Sign In</a>
                 </li>
 
                 <li class="nav-tabs">
@@ -69,7 +69,7 @@
     <div class="hero-image">
       <div class="hero-text">
         <h1 style="font-size:50px">HireTeeNee</h1>
-        <p>Freelance Service</p>
+        <p>Freelance Service.<br>Don't have an account?<br>Click "Join Us" below to create your account.</p>
           <a href="{% url 'register_user' %}" class="btn btn-secondary">Join Us</a>
       </div>
     </div><br>
@@ -119,6 +119,6 @@
         }
       });
     </script>
-
+<p style="padding-bottom: 20px"></p>
 </body>
 </html>

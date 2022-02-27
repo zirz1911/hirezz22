@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from members.form import *
 from members.models import Item
 from django.contrib.auth import authenticate, login, logout
@@ -26,9 +26,9 @@ def postPage(request):  # show
     return render(request, 'postPage.html', context)
 
 
-def selectPost(request, p_id):  # Select One
+def selectPost(request, myUser):  # Select One
     context = {}
-    context["po"] = Item.objects.get(p_id=p_id)
+    context["po"] = Item.objects.get(myUser=myUser)
     return render(request, 'postSelect.html', context)
 
 
@@ -44,6 +44,38 @@ def addPost(request):  # Add Post
 
         return render(request, 'AddPost.html', {'form': newForm})
 
+
+def updatePost(request, myUser):
+    object = get_object_or_404(Item, myUser=myUser)
+    updateForm = PostFormUpdate(request.POST or None, instance=object)
+
+    if request.method == "POST":
+        if updateForm.is_valid():
+            updateForm.save()
+        return redirect('postPage')
+    else:
+        return render(request, 'updatePost.html', {'form': updateForm, 'object': object})
+
+
+def updatePostPicture(request, myUser):
+    object = get_object_or_404(Item, myUser=myUser)
+    updateForm = PostPicFormUpdate(request.POST or None, request.FILES, instance=object)
+
+    if request.method == "POST":
+        if updateForm.is_valid():
+            updateForm.save()
+        return redirect('postPage')
+    else:
+        return render(request, 'updatePostPic.html', {'form': updateForm, 'object': object})
+
+
+def deletePost(request, myUser):
+    post = get_object_or_404(Item, myUser=myUser)
+    if request.method == "POST":
+        post.delete()
+        return redirect('postPage')
+    else:
+        return render(request, "deletePost.html", {'post': post})
 
 # ----------------------------------------------------------------- POST PAGE -----------------------------------------------------------------------
 

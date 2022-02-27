@@ -1,0 +1,31 @@
+{% extends 'layout_other.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+    {% if user == post.myUser %}
+
+    <form class="=" method="post">
+        {% csrf_token %}
+    <H1><b>{{ post.topic }}</b></H1>
+    <h3>Description</h3>
+        <p>{{ post.description|safe }}</p><br>
+
+    <p align="center">
+        <h3 class="text-danger"> Are you sure to delete this post? </h3><br>
+        <input type="submit" value=" Confirm " class="btn btn-danger" onclick="return confirm('Are you sure to delete?')"/>
+        <input type="button" value=" Cancel " class="btn btn-secondary"
+        onclick="location.href='{% url 'postPage' %}'"/>
+    </p>
+    {% else %}
+        <h2>Access Denied!</h2>
+        <p>Only {{ post.myUser }} can update this post.</p>
+        Logged In User: {{ user.user_id }}<br>
+        Post Manager: {{ post.myUser }}
+
+    </form>
+    {% endif %}
+
+    {% endif %}
+{% endblock %}
