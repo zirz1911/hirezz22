@@ -1,2 +1,2 @@
-# HireTeenee
-backend for Angular
+# Hirez
+backend for MiniProjects
