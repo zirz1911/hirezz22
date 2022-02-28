@@ -1,9 +1,10 @@
-{% extends 'layout.html' %}
+{% extends 'layout_other.html' %}
 {% load static %}
 
 {% block content %}
 
 {% if user.is_authenticated %}
+<div class="container" style="padding-top: 10px">
 <h3 class="bg-secondary" style="color: white">New Post</h3>
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -23,6 +24,6 @@
                     <a style="font-size: 20px">Must be logged in to see this page...</a>
             </div>
         </div>
-
+</div>
 {% endif %}
 {% endblock content %}

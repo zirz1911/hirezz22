@@ -8,18 +8,16 @@
 
         {% if user.user_profile %}
 
-                <div class="card bg-light shadow rounded" style="color: black; width: 215px; height: 230px;" >
+                <div class="card bg-light shadow rounded" style="color: black;" >
                 <div class="card-body">
                     <td>
-                        <img class="card-img-top" src="{{ user.user_profile.url }}" alt="Card image" style="width: 100%; alignment: right">
+                        <img class="card-img-top shadow rounded" src="{{ user.user_profile.url }}" alt="Card image" style="width: 20%; alignment: right">
                     </td>
                 {% else %}
                     <td>
                     <img class="card-img-top" src="{% static 'images/naga.jpg' %}" alt="Card image" style="width: 20%; ">
                     </td>
-        {% endif %} <!-- User Profile -->
-                </div>
-                </div>
+        {% endif %}<br><br> <!-- User Profile -->
 
                 <h2 class="text-uppercase">{{ user.user_id }}</h2>
                 {% if user.is_admin == False %}
@@ -27,6 +25,11 @@
                 {% else %}
                     <b style="color: #0fff3a">Admin</b>
                 {% endif %}<br>
+
+                </div>
+                </div>
+
+
 
 
     {% endif %} <!-- user.is_authenticated -->

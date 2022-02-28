@@ -82,7 +82,6 @@ class Item(models.Model):
     image3 = models.ImageField(upload_to="uploads/", null=True, blank=True)
 
 
-
 class Freelancer(models.Model):
     f_id = models.AutoField(primary_key=True)
     myUser = models.ForeignKey(myUser, on_delete=models.CASCADE, default="")

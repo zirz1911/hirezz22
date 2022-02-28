@@ -1,0 +1,27 @@
+{% extends 'layout_other.html' %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% if user == object.myUser%}
+
+<h3 class="bg-secondary" style="color: white">Update Freelancer Profile</h3>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.media }}
+            {{ form.as_p }}
+        </div><br>
+        <button type="submit" class="btn btn-danger" style="float: right; margin-left: 5px" onclick="location.href='{% url 'freelanceProfileShow' %}'">Cancel</button>
+        <button type="submit" class="btn btn-primary" style="float: right; padding-left: 40px; padding-right: 40px">Post</button><br><br>
+{% else %}
+        <h2>Access Denied!</h2>
+        <p>Only {{ object.myUser }} can update this post.</p>
+        Logged In User: {{ user.user_id }}<br>
+        Post Manager: {{ object.myUser }}
+
+    </form>
+{% endif %}
+{% endif %}
+{% endblock content %}

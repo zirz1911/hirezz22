@@ -111,33 +111,72 @@ class PostPicFormUpdate(forms.ModelForm):
         widgets = {
         }
 
-#Add Freelance User
+
+# ------------------------------------------------------------------------ Freelancer ---------------------------------------------------------
+# Add Freelance User
 class FreelancerCreateProfile(forms.ModelForm):
     class Meta:
         model = Freelancer
         fields = ('gender', 'good_at', 'style', 'description', 'profile')
-        GENDER_CHOICES = [('M', 'Male'), ('F', 'Female')]
+        GENDER_CHOICES = [('M', 'Male'), ('F', 'Female'), ('O', 'Other')]
         widgets = {
             'gender': forms.RadioSelect(choices=GENDER_CHOICES, ),
-            'good_at': forms.TextInput({'class': 'form-control', 'required': 'required'}),
-            'style': forms.TextInput({'class': 'form-control', 'required': 'required'}),
+            'good_at': forms.TextInput({'class': 'form-control', 'required': 'required', 'placeholder': 'Example: Illustrator, Photoshop, etc...'}),
+            'style': forms.TextInput({'class': 'form-control', 'required': 'required', 'placeholder': 'Example: Chibi, Nature, Cyber Punk, etc...'}),
             'description': forms.Textarea({'class': 'form-control', 'required': 'required', 'row': 5, 'cols': 60}),
         }
 
-#Add Freelance Admin
+
+# Add Freelance Admin
 class FreelancerCreateProfileAdmin(forms.ModelForm):
     class Meta:
         model = Freelancer
         fields = ('myUser', 'gender', 'good_at', 'style', 'description', 'profile')
-        GENDER_CHOICES = [('M', 'Male'), ('F', 'Female')]
+        GENDER_CHOICES = [('M', 'Male'), ('F', 'Female'), ('O', 'Other')]
         widgets = {
             'myUser': forms.Select(attrs={'class': 'form-control'}),
             'gender': forms.RadioSelect(choices=GENDER_CHOICES),
-            'good_at': forms.TextInput({'class': 'form-control', 'required': 'required'}),
-            'style': forms.TextInput({'class': 'form-control', 'required': 'required'}),
+            'good_at': forms.TextInput({'class': 'form-control', 'required': 'required', 'placeholder': 'Example: Illustrator, Photoshop, etc...'}),
+            'style': forms.TextInput({'class': 'form-control', 'required': 'required', 'placeholder': 'Example: Chibi, Nature, Cyber Punk, etc...'}),
             'description': forms.Textarea({'class': 'form-control', 'required': 'required', 'row': 5, 'cols': 60}),
         }
 
+
+# Update Freelancer Admin
+class FreelancerUpdateAdmin(forms.ModelForm):
+    class Meta:
+        model = Freelancer
+        fields = ('myUser', 'gender', 'good_at', 'style', 'description')
+        GENDER_CHOICES = [('M', 'Male'), ('F', 'Female'), ('O', 'Other')]
+        widgets = {
+            'myUser': forms.Select(attrs={'class': 'form-control'}),
+            'gender': forms.RadioSelect(choices=GENDER_CHOICES),
+            'good_at': forms.TextInput({'class': 'form-control', 'required': 'required', 'placeholder': 'Example: Illustrator, Photoshop, etc...'}),
+            'style': forms.TextInput({'class': 'form-control', 'required': 'required', 'placeholder': 'Example: Chibi, Nature, Cyber Punk, etc...'}),
+            'description': forms.Textarea({'class': 'form-control', 'required': 'required', 'row': 5, 'cols': 60}),
+        }
+
+
+# User Update Freelancer
+class FreelancerUpdate(forms.ModelForm):
+    class Meta:
+        model = Freelancer
+        fields = ('gender', 'good_at', 'style', 'description')
+        GENDER_CHOICES = [('M', 'Male'), ('F', 'Female'), ('O', 'Other')]
+        widgets = {
+            'gender': forms.RadioSelect(choices=GENDER_CHOICES, ),
+            'good_at': forms.TextInput({'class': 'form-control', 'required': 'required', 'placeholder': 'Example: Illustrator, Photoshop, etc...'}),
+            'style': forms.TextInput({'class': 'form-control', 'required': 'required', 'placeholder': 'Example: Chibi, Nature, Cyber Punk, etc...'}),
+            'description': forms.Textarea({'class': 'form-control', 'required': 'required', 'row': 5, 'cols': 60}),
+        }
+
+
+class ProfileFreelancerFormUpdate(forms.ModelForm):
+    class Meta:
+        model = Freelancer
+        fields = ('profile',)
+        widgets = {
+        }
 
 
 class RegisterUserForm(UserCreationForm):

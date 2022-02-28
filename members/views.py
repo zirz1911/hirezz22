@@ -147,7 +147,7 @@ def userProfileShow(request):
 def freelanceProfileShow(request):
     free = Freelancer.objects.all()
     context = {'free': free}
-    return render(request, 'freelanceProfile.html', context)
+    return render(request, 'freelancer/freelanceProfile.html', context)
 
 
 def addFreelancer(request):  # Add Freelance
@@ -157,7 +157,7 @@ def addFreelancer(request):  # Add Freelance
             chkExits = Freelancer.objects.filter(myUser=request.POST['myUser'])
             if chkExits:
                 messages.success(request, "This user already have Freelancer profile.")
-                return render(request, 'createFreelanceProfile.html', {'form': newForm})
+                return render(request, 'freelancer/createFreelanceProfile.html', {'form': newForm})
             elif newForm.is_valid():
                 newForm.save()
                 messages.success(request, "Your post is successful.")
@@ -177,4 +177,48 @@ def addFreelancer(request):  # Add Freelance
         else:
             newForm = FreelancerCreateProfile()
 
-        return render(request, 'createFreelanceProfile.html', {'form': newForm})
+        return render(request, 'freelancer/createFreelanceProfile.html', {'form': newForm})
+
+
+def selectFreelancer(request, myUser):  # Select One
+    context = {}
+    context["fr"] = Freelancer.objects.get(myUser=myUser)
+    return render(request, 'freelancer/selectFreelancer.html', context)
+
+
+def updateFreelancer(request, myUser):
+    object = get_object_or_404(Freelancer, myUser=myUser)
+    if request.user.is_superuser:
+        updateForm = FreelancerUpdateAdmin(request.POST or None, instance=object)
+    else:
+        updateForm = FreelancerUpdate(request.POST or None, instance=object)
+
+    if request.method == "POST":
+        if updateForm.is_valid():
+            updateForm.save()
+        return redirect('freelanceProfileShow')
+    else:
+        return render(request, 'freelancer/updateFreelancer.html', {'form': updateForm, 'object': object})
+
+
+def updateFreelancerProfile(request, myUser):
+    object = get_object_or_404(Freelancer, myUser=myUser)
+    updateForm = ProfileFreelancerFormUpdate(request.POST or None, request.FILES, instance=object)
+
+    if request.method == "POST":
+        if updateForm.is_valid():
+            updateForm.save()
+        return redirect('freelanceProfileShow')
+    else:
+        return render(request, 'freelancer/updateFreelancerProfile.html', {'form': updateForm, 'object': object})
+
+
+def deleteFreelancerProfile(request, myUser):
+    free = get_object_or_404(Freelancer, myUser=myUser)
+    if request.method == "POST":
+        free.delete()
+        return redirect('freelanceProfileShow')
+    else:
+        return render(request, "freelancer/deleteFreelancer.html", {'free': free})
+
+
