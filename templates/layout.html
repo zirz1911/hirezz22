@@ -42,6 +42,12 @@
             </li>
 
             {% if user.is_authenticated %}
+
+                <li class="btn-outline-secondary">
+                  <a class="nav-link text-white" href="/freelanceProfileShow"><i class="fa fa-user"></i> Freelancer</a>
+                </li>
+
+
                 <li class="btn-outline-secondary">
                   <a class="nav-link text-white" href="/userProfileShow"><i class="fa fa-user"></i> Profile: {{ user.user_id }}<img src="{% static 'images/online.jpg' %}" style="width: 10px; height: 10px; alignment: right"></a>
                 </li>

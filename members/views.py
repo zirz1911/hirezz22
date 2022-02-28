@@ -30,20 +30,36 @@ def selectPost(request, myUser):  # Select One
 
 def addPost(request):  # Add Post
     if request.method == "POST":
-        newForm = PostFormCreate(request.POST, request.FILES)
+        if request.user.is_superuser:
+            newForm = PostFormCreateAdmin(request.POST, request.FILES)
+            if newForm.is_valid():
+                newForm.save()
+                messages.success(request, "Your post is successful.")
+                return redirect('postPage')
+        else:
+            newForm = PostFormCreate(request.POST, request.FILES)
         if newForm.is_valid():
-            newForm.save()
-        messages.success(request, "Your post is successful.")
-        return redirect('postPage')
+            # newForm.save()
+            add = newForm.save(commit=False)
+            add.myUser = request.user
+            add.save()
+            messages.success(request, "Your post is successful.")
+            return redirect('postPage')
     else:
-        newForm = PostFormCreate()
+        if request.user.is_superuser:
+            newForm = PostFormCreateAdmin()
+        else:
+            newForm = PostFormCreate()
 
         return render(request, 'post/AddPost.html', {'form': newForm})
 
 
 def updatePost(request, myUser):
     object = get_object_or_404(Item, myUser=myUser)
-    updateForm = PostFormUpdate(request.POST or None, instance=object)
+    if request.user.is_superuser:
+        updateForm = PostFormUpdateAdmin(request.POST or None, instance=object)
+    else:
+        updateForm = PostFormUpdate(request.POST or None, instance=object)
 
     if request.method == "POST":
         if updateForm.is_valid():
@@ -72,6 +88,7 @@ def deletePost(request, myUser):
         return redirect('postPage')
     else:
         return render(request, "post/deletePost.html", {'post': post})
+
 
 # ----------------------------------------------------------------- POST PAGE -----------------------------------------------------------------------
 
@@ -118,8 +135,46 @@ def register_user(request):
 
 # ----------------------------------------------------------------- LOGIN / LOGOUT ------------------------------------------------------------------
 
+# ------------------------------------------------------------ Profile / Profile Freelancer ---------------------------------------------------------
+
 
 def userProfileShow(request):
     post = myUser.objects.all()
     context = {'post': post}
     return render(request, 'user/userProfile.html', context)
+
+
+def freelanceProfileShow(request):
+    free = Freelancer.objects.all()
+    context = {'free': free}
+    return render(request, 'freelanceProfile.html', context)
+
+
+def addFreelancer(request):  # Add Freelance
+    if request.method == "POST":
+        if request.user.is_superuser:
+            newForm = FreelancerCreateProfileAdmin(request.POST, request.FILES)
+            chkExits = Freelancer.objects.filter(myUser=request.POST['myUser'])
+            if chkExits:
+                messages.success(request, "This user already have Freelancer profile.")
+                return render(request, 'createFreelanceProfile.html', {'form': newForm})
+            elif newForm.is_valid():
+                newForm.save()
+                messages.success(request, "Your post is successful.")
+                return redirect('freelanceProfileShow')
+        else:
+            newForm = FreelancerCreateProfile(request.POST, request.FILES)
+        if newForm.is_valid():
+            # newForm.save()
+            add = newForm.save(commit=False)
+            add.myUser = request.user
+            add.save()
+            messages.success(request, "Create Freelancer successful.")
+            return redirect('freelanceProfileShow')
+    else:
+        if request.user.is_superuser:
+            newForm = FreelancerCreateProfileAdmin()
+        else:
+            newForm = FreelancerCreateProfile()
+
+        return render(request, 'createFreelanceProfile.html', {'form': newForm})

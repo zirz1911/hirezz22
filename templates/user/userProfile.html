@@ -23,10 +23,11 @@
 
                 <h2 class="text-uppercase">{{ user.user_id }}</h2>
                 {% if user.is_admin == False %}
-                    <a>User</a>
+                    <b style="color: #2e8abb;">User</b>
                 {% else %}
                     <b style="color: #0fff3a">Admin</b>
-                {% endif %}
+                {% endif %}<br>
+
 
     {% endif %} <!-- user.is_authenticated -->
 

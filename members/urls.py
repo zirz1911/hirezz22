@@ -17,5 +17,6 @@ urlpatterns = [
     path('postPage', views.postPage, name='postPage'),
     path('<myUser>/selectPost', views.selectPost, name='selectPost'),
     path('userProfileShow', views.userProfileShow, name='userProfileShow'),
-
+    path('freelanceProfileShow', views.freelanceProfileShow, name='freelanceProfileShow'),
+    path('addFreelancer', views.addFreelancer, name='addFreelancer'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
