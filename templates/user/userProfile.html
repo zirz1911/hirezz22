@@ -8,23 +8,29 @@
 
         {% if user.user_profile %}
 
-                <div class="card bg-light shadow rounded" style="color: black;" >
-                <div class="card-body">
-                    <td>
-                        <img class="card-img-top shadow rounded" src="{{ user.user_profile.url }}" alt="Card image" style="width: 20%; alignment: right">
-                    </td>
-                {% else %}
-                    <td>
-                    <img class="card-img-top" src="{% static 'images/naga.jpg' %}" alt="Card image" style="width: 20%; ">
-                    </td>
-        {% endif %}<br><br> <!-- User Profile -->
+                <div class="row bg-light shadow rounded" style="color: black; padding: 10px;" >
+                <div class="col-md-3" style="background-color: #b6d4fe;">
+                <center>
+                        <td>
+                            <img class="card-img-top shadow rounded" src="{{ user.user_profile.url }}" alt="Card image" style="width: 80%; alignment: right">
+                        </td>
+                    {% else %}
+                        <td>
+                        <img class="card-img-top" src="{% static 'images/naga.jpg' %}" alt="Card image" style="width: 80%; ">
+                        </td>
+                    {% endif %}<br><br> <!-- User Profile -->
 
-                <h2 class="text-uppercase">{{ user.user_id }}</h2>
-                {% if user.is_admin == False %}
-                    <b style="color: #2e8abb;">User</b>
-                {% else %}
-                    <b style="color: #0fff3a">Admin</b>
-                {% endif %}<br>
+                    <h2 class="text-uppercase">{{ user.user_id }}</h2>
+                    {% if user.is_admin == False %}
+                        <b style="color: #2e8abb;">User</b>
+                    {% else %}
+                        <b style="color: #0fff3a">Admin</b>
+                    {% endif %}<br>
+                </center>
+                </div>
+
+                 <div class="col-md-9" style="background-color: #4d6a94; padding: 10px">
+
 
                 </div>
                 </div>

@@ -179,6 +179,7 @@ class ProfileFreelancerFormUpdate(forms.ModelForm):
         }
 
 
+#Register User Form
 class RegisterUserForm(UserCreationForm):
     user_email = forms.EmailField(widget=forms.EmailInput({'class': 'form-control'}))
     user_name = forms.CharField(max_length=50, widget=forms.TextInput({'class': 'form-control'}))
@@ -196,3 +197,4 @@ class RegisterUserForm(UserCreationForm):
         self.fields['user_id'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
+

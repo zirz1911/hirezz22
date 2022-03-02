@@ -19,7 +19,7 @@ def index(request):
 def postPage(request):  # show
     post = Item.objects.all()
     context = {'post': post}
-    return render(request, 'post/postPage.html', context)
+    return render(request, 'post/postPage2.html', context)
 
 
 def selectPost(request, myUser):  # Select One

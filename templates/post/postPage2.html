@@ -1,0 +1,41 @@
+{% extends 'layout_other.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container" style="padding-top: 20px">
+        {% if user.is_authenticated %}
+        <a href="/addPost" class="btn btn-primary btn-outline-light" style="float: right">&nbsp;&nbsp;&nbsp; New Post &nbsp;&nbsp;&nbsp;</a><br><br>
+        {% endif %}
+
+        <div class="container-fluid">
+            {% for p in post %}
+                <div class="row border border-secondary rounded" style="padding: 10px; margin-bottom: 10px; background-color: transparent">
+
+                        <div class="col-md-4" style="background-color: transparent">
+                          {% if p.image %}
+                            <td>
+                                <img class="img-fluid rounded" src="{{ p.image.url }}" style="width: 100%">
+
+                            </td>
+                          {% else %}
+                            <td>
+                                <img class="" src="{% static 'images/naga.jpg' %}" style="width: 100%">
+                            </td>
+                          {% endif %}
+                        </div>
+                        <div class="col-md-8" style="background-color: transparent">
+                            <h2 class="">
+                            {{ p.topic }}
+                            </h2>
+                            <p class="" style="font-size: 16px">
+                            {{ p.description|safe }}
+                            </p>
+                            <a href="{% url 'selectPost' p.myUser%}" class="" style="color: #3b3d41">More Detail</a>
+                        </div>
+
+
+              </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

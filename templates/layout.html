@@ -75,8 +75,12 @@
     <div class="hero-image">
       <div class="hero-text">
         <h1 style="font-size:50px">HireTeeNee</h1>
-        <p>Freelance Service.<br>Don't have an account?<br>Click "Join Us" below to create your account.</p>
-          <a href="{% url 'register_user' %}" class="btn btn-secondary">Join Us</a>
+          {% if user.is_authenticated %}
+            <p>Freelance Service.</p>
+          {% else %}
+            <p>Freelance Service.<br>Don't have an account?<br>Click "Join Us" below to create your account.</p>
+            <a href="{% url 'register_user' %}" class="btn btn-secondary">Join Us</a>
+          {% endif %}
       </div>
     </div><br>
 
