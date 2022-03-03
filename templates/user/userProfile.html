@@ -6,10 +6,10 @@
     {% if user.is_authenticated %}
         <p style="padding-top: 10px"></p>
 
-        {% if user.user_profile %}
+                    {% if user.user_profile %}
 
                 <div class="row bg-light shadow rounded" style="color: black; padding: 10px;" >
-                <div class="col-md-3" style="background-color: #b6d4fe;">
+                <div class="col-md-3" style="background-color: transparent;">
                 <center>
                         <td>
                             <img class="card-img-top shadow rounded" src="{{ user.user_profile.url }}" alt="Card image" style="width: 80%; alignment: right">
@@ -26,11 +26,15 @@
                     {% else %}
                         <b style="color: #0fff3a">Admin</b>
                     {% endif %}<br>
+                    <a style="font-size: 16px">Join Date: {{ user.user_date_join }}</a>
                 </center>
                 </div>
 
-                 <div class="col-md-9" style="background-color: #4d6a94; padding: 10px">
-
+                 <div class="col-md-9 rounded" style="background-color: #96a9c2; padding: 10px">
+                     <h3>Name: <a style="font-size: 24px">{{ user.user_name }}</a></h3>
+                     <h3>Lastname: <a style="font-size: 24px">{{ user.user_lastname }}</a></h3>
+                     <h3>Email: <a style="font-size: 24px">{{ user.user_email }}</a></h3>
+                     <h3>Career: <a style="font-size: 24px">{{ user.user_job }}</a></h3>
 
                 </div>
                 </div>

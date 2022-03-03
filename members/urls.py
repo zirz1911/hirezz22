@@ -15,7 +15,6 @@ urlpatterns = [
     path('addPost', views.addPost, name='addPost'),
     path('<myUser>/updatePost', views.updatePost, name='updatePost'),
     path('<myUser>/deletePost', views.deletePost, name='deletePost'),
-    path('<myUser>/updatePostPicture', views.updatePostPicture, name='updatePostPicture'),
     path('postPage', views.postPage, name='postPage'),
     path('<myUser>/selectPost', views.selectPost, name='selectPost'),
     path('userProfileShow', views.userProfileShow, name='userProfileShow'),
@@ -25,6 +24,6 @@ urlpatterns = [
     path('<myUser>/selectFreelancer', views.selectFreelancer, name='selectFreelancer'),
     path('<myUser>/updateFreelancer', views.updateFreelancer, name='FreelancerUpdate'),
     path('<myUser>/deleteFreelancerProfile', views.deleteFreelancerProfile, name='deleteFreelancerProfile'),
-    path('<myUser>/updateFreelancerProfile', views.updateFreelancerProfile, name='ProfileFreelancerFormUpdate'),
+
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

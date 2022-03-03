@@ -14,7 +14,7 @@
             {{ form.as_p }}
         </div><br>
         <button type="submit" class="btn btn-danger" style="float: right; margin-left: 5px" onclick="location.href='{% url 'freelanceProfileShow' %}'">Cancel</button>
-        <button type="submit" class="btn btn-primary" style="float: right; padding-left: 40px; padding-right: 40px">Post</button><br><br>
+        <button type="submit" class="btn btn-primary" style="float: right; padding-left: 40px; padding-right: 40px">Save</button><br><br>
 {% else %}
         <h2>Access Denied!</h2>
         <p>Only {{ object.myUser }} can update this post.</p>

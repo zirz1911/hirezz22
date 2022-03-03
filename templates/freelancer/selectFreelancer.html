@@ -6,7 +6,7 @@
         {% if fr.profile %}
 
         <div class="row bg-light shadow rounded" style="color: black; padding: 10px;" >
-                <div class="col-md-3" style="background-color: #b6d4fe;">
+                <div class="col-md-3" style="background-color: transparent;">
                 <center>
                     <td>
                         <img class="card-img-top shadow rounded" src="{{ fr.profile.url }}" alt="Card image" style="width: 100%; alignment: right">
@@ -20,13 +20,27 @@
                 </center>
                 </div>
 
-                <div class="col-md-9" style="background-color: #b6d4fe; padding: 10px">
+                <div class="col-md-9" style="background-color: transparent; padding: 10px">
                     <a href="{% url 'deleteFreelancerProfile' fr.myUser%}" class="btn btn-outline-danger" style="float: right; margin-left: 10px">&nbsp;&nbsp;&nbsp; Delete &nbsp;&nbsp;&nbsp;</a>
-                    <a href="{% url 'ProfileFreelancerFormUpdate' fr.myUser%}" class="btn btn-outline-dark" style="float: right; margin-left: 10px">&nbsp;&nbsp;&nbsp; Update Image &nbsp;&nbsp;&nbsp;</a>
                     <a href="{% url 'FreelancerUpdate' fr.myUser%}" class="btn btn-outline-dark" style="float: right">&nbsp;&nbsp;&nbsp; Update &nbsp;&nbsp;&nbsp;</a><br><br>
 
                     <h3>Description</h3>
-                    <p>{{ fr.description|safe }}</p><br><br>
+                    <p style="font-size: 24px">{{ fr.description|safe }}</p><br>
+
+
+                    {% if fr.gender == 1 %}
+                    <h3>Gender: <a style="font-size: 24px">Male</a></h3>
+                    {% elif fr.gender == 2 %}
+                    <h3>Gender: <a style="font-size: 24px">Female</a></h3>
+                    {% else %}
+                    <h3>Gender: <a style="font-size: 24px">Other</a></h3>
+                    {% endif %}
+
+                    <h3>Good At: <a style="font-size: 24px">{{ fr.good_at }}</a></h3>
+
+
+                    <h3>Style: <a style="font-size: 24px">{{ fr.style }}</a></h3>
+
 
                 </div>
         </div>

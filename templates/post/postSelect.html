@@ -5,7 +5,6 @@
     {% if user.is_authenticated %}
     <H1><b>{{ po.topic }}</b></H1>
         <a href="{% url 'deletePost' po.myUser%}" class="btn btn-outline-danger" style="float: right; margin-left: 10px">&nbsp;&nbsp;&nbsp; Delete &nbsp;&nbsp;&nbsp;</a>
-        <a href="{% url 'updatePostPicture' po.myUser%}" class="btn btn-outline-dark" style="float: right; margin-left: 10px">&nbsp;&nbsp;&nbsp; Update Image &nbsp;&nbsp;&nbsp;</a>
         <a href="{% url 'updatePost' po.myUser%}" class="btn btn-outline-dark" style="float: right">&nbsp;&nbsp;&nbsp; Update &nbsp;&nbsp;&nbsp;</a><br><br>
 
     <center>
