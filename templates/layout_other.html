@@ -4,17 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>HireTeeNee - Freelance Service</title>
+    <link rel="shortcut icon" href="{% static 'images/freelance.png' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
     <link rel="stylesheet" href="{% static 'css/grid-image.css' %}">
-    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/headerz.css' %}">
+
 </head>
 <body style="background-color: #f3f3f3; opacity: 100%; padding-bottom: 0px">
 
     <!-- ส่วน Menu -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3 bg-dark ">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3 bg-dark" style="height: 60px">
       <div class="container">
-        <a class="navbar-brand" href="#">HireTeeNee</a>
+        <a class="navbar-brand" href="/index" style="width: 200px"><img src="{% static 'images/Hire.png' %}" style="width: 50%"></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -33,18 +35,25 @@
             <li class="btn-outline-secondary">
               <a class="nav-link text-white" href="/index"><i class="fa fa-home"></i> Home</a>
             </li>
-            <li class="btn-outline-secondary">
-              <a class="nav-link text-white" href="/postPage"><i class="fa fa-list"></i> Post</a>
-            </li>
+
+             <li class="btn-outline-secondary">
+                <a class="nav-link text-white" href="/postPage"><i class="fa fa-list"></i> Post</a>
+             </li>
+             <li class="btn-outline-secondary">
+                <a class="nav-link text-white" href="/search_post"><i class="fa fa-search"></i> Post Search</a>
+             </li>
 
             <li class="btn-outline-secondary">
-              <a class="nav-link text-white" href="#"><i class="fa fa-contact-book"></i> Contact</a>
+              <a class="nav-link text-white" href="mailto:patipan.tu@rmuti.ac.th"><i class="fa fa-contact-book"></i> Contact</a>
             </li>
 
             {% if user.is_authenticated %}
+                <li class="btn-outline-secondary">
+                  <a class="nav-link text-white" href="/myPost"><i class="fa fa-signs-post"></i> My Post</a>
+                </li>
 
                 <li class="btn-outline-secondary">
-                  <a class="nav-link text-white" href="/freelanceProfileShow"><i class="fa fa-user"></i> Freelancer</a>
+                  <a class="nav-link text-white" href="/freelanceProfileShow"><i class="fa fa-person-biking"></i> Freelancer</a>
                 </li>
 
                 <li class="btn-outline-secondary">
@@ -81,7 +90,7 @@
     </svg>
 
     <!-- ส่วน Content -->
-    <div class="container-fluid" style="padding-top: 0px">
+    <div class="container-fluid" style="margin-top: 10px">
         <div class="row">
             <div class="col-md-12" style="background-color: #f3f3f3; opacity: 100%; padding-bottom: 0px">
                 {% if messages %}

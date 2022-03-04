@@ -16,10 +16,12 @@
         <button type="submit" class="btn btn-danger" style="float: right; margin-left: 5px" onclick="location.href='{% url 'postPage' %}'">Cancel</button>
         <button type="submit" class="btn btn-primary" style="float: right; padding-left: 40px; padding-right: 40px">Save</button><br><br>
 {% else %}
+        <center style="margin-top: 200px">
         <h2>Access Denied!</h2>
         <p>Only {{ object.myUser }} can update this post.</p>
         Logged In User: {{ user.user_id }}<br>
         Post Manager: {{ object.myUser }}
+        </center>
 
     </form>
 {% endif %}

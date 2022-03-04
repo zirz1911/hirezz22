@@ -19,10 +19,12 @@
         onclick="location.href='{% url 'postPage' %}'"/>
     </p>
     {% else %}
+        <center style="margin-top: 200px">
         <h2>Access Denied!</h2>
         <p>Only {{ post.myUser }} can update this post.</p>
         Logged In User: {{ user.user_id }}<br>
         Post Manager: {{ post.myUser }}
+        </center>
 
     </form>
     {% endif %}

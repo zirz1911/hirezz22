@@ -78,6 +78,16 @@ def deletePost(request, myUser):
         return render(request, "post/deletePost.html", {'post': post})
 
 
+def search_post(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        post = Item.objects.filter(topic__icontains=searched)
+
+        return render(request, 'search_post.html', {'searched': searched, 'post': post})
+    else:
+        return render(request, 'search_post.html', {})
+
+
 # ----------------------------------------------------------------- POST PAGE -----------------------------------------------------------------------
 
 # ----------------------------------------------------------------- LOGIN / LOGOUT ------------------------------------------------------------------
@@ -198,3 +208,7 @@ def deleteFreelancerProfile(request, myUser):
         return render(request, "freelancer/deleteFreelancer.html", {'free': free})
 
 
+def myPost(request):  # show
+    post = Item.objects.all()
+    context = {'post': post}
+    return render(request, 'freelancer/myPost.html', context)

@@ -1,0 +1,45 @@
+{% extends 'layout_other.html' %}
+{% load static %}
+
+{% block content %}
+
+    <form method=POST action="{% url 'search_post' %}" style="margin-top: 5px">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search Post" aria-label="Search" name="searched" style="font-size: 20px">
+        <button class="btn btn-outline-secondary" type="submit" style="margin-top: 5px">Search</button>
+    </form>
+
+    {% if searched %}
+        <h1>You Searched for {{ searched }}</h1>
+        <br>
+        {% for postz in post %}
+            <div class="row border border-secondary rounded" style="padding: 10px; margin-bottom: 10px; background-color: transparent">
+
+                        <div class="col-md-4" style="background-color: transparent">
+                          {% if postz.image %}
+                            <td>
+                                <img class="img-fluid rounded" src="{{ postz.image.url }}" style="width: 100%">
+
+                            </td>
+                          {% else %}
+                            <td>
+                                <img class="" src="{% static 'images/naga.jpg' %}" style="width: 100%">
+                            </td>
+                          {% endif %}
+                        </div>
+                        <div class="col-md-8" style="background-color: transparent">
+                            <h2 class="">
+                            {{ postz.topic }}
+                            </h2>
+                            <p class="" style="font-size: 16px">
+                            {{ postz.description|safe }}
+                            </p>
+                            <a href="{% url 'selectPost' postz.myUser%}" class="" style="color: #3b3d41">More Detail</a>
+                        </div>
+              </div>
+        {% endfor %}
+
+    {% else %}
+        <h1>Search Something....</h1>
+    {% endif %}
+{% endblock %}

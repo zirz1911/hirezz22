@@ -57,11 +57,11 @@
     <h3>Price</h3>
         <p>{{ po.price }} Baht</p><br>
     <h3>Contact</h3>
+        <li>{{ po.contactFb }}</li>
+        <li>{{ po.contactTw }}</li>
+        <li>{{ po.contactEmail }}</li>
+        <li>{{ po.contactOther }}</li><br>
 
-        <a href="{{ po.contactFb }}" target="_blank"><img src="{% static 'images/iconfacebook.png' %}" width="5%"></a>
-        <a href="{{ po.contactTw }}" target="_blank"><img src="{% static 'images/icontwitter.png' %}" width="5%"></a>
-        <a href="mailto: {{ po.contactEmail }}" target="_blank"><img src="{% static 'images/iconemail.png' %}" width="5%"></a>
-        <a href="{{ po.contactOther }}" target="_blank"><img src="{% static 'images/window-othe.png' %}" width="5%"></a><br><br>
 
     {% else %}
         <div class="alert alert-warning d-flex align-items-center" role="alert" style="margin-top: 10px">

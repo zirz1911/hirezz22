@@ -3,17 +3,40 @@
 
 
 {% block content %}
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
+    <div class="col-md-12 text-center" style="background-color: #cddee7">
+    <div class="row mb-3">
+          <div class="col-md-3 p-lg-3 mx-auto my-3 rounded" style="background-color: #7096a4">
+            <img class="rounded" src="{% static 'images/illustration.jpg' %}" style="width: 100%;">
+            <h3 class="display-4 font-weight-normal">Illustration</h3>
+            <p class="lead font-weight-normal">a picture in a book, magazine, etc. or the process of illustrating something</p>
+            <a class="btn btn-dark btn-outline-light" href="/postPage">Post Page</a>
+          </div>
+          <div class="col-md-3 p-lg-3 mx-auto my-3 rounded" style="background-color: #7096a4">
+            <img class="rounded" src="{% static 'images/wordpress.jpg' %}" style="width: 100%;">
+            <h3 class="display-4 font-weight-normal">WordPress</h3>
+            <p class="lead font-weight-normal">WordPress is a blogging program written in PHP and based on a GPL licensed MySQL database.</p>
+            <a class="btn btn-dark btn-outline-light" href="/postPage">Post Page</a>
+          </div>
+          <div class="col-md-3 p-lg-3 mx-auto my-3 rounded" style="background-color: #7096a4">
+            <img class="rounded" src="{% static 'images/translation.jpg' %}" style="width: 100%;">
+            <h3 class="display-4 font-weight-normal">Translation</h3>
+            <p class="lead font-weight-normal">to change words into a different language.</p>
+            <a class="btn btn-dark btn-outline-light" href="/postPage">Post Page</a>
+          </div>
+    </div>
+    </div>
 
+<div class="row" style="padding: 10px; margin-bottom: 10px; background-color: transparent">
+    <div class="col-md-7" style="background-color: #3f1c7a; padding: 10px">
+          <img src="{% static 'images/business.png' %}">
+    </div>
+    <div class="col-md-5" style="background-color: #3f1c7a; padding: 10px;">
+        <h2 style="color: white">A whole world of freelance talent at your fingertips</h2>
+        <h4 style="color: white"><i class="fa fa-check-circle"></i> The best for every budget</h4>
+        <p style="color: white">Find high-quality services at every price point. No hourly rates, just project-based pricing.</p>>
+
+        <h4 style="color: white"><i class="fa fa-check-circle"></i> Quality work done quickly</h4>>
+        <p style="color: white">Find the right freelancer to begin working on your project within minutes.</p>
+    </div>
+</div>
 {% endblock %}

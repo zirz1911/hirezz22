@@ -21,11 +21,11 @@
               <div class="card-body">
                   {% if f.profile %}
                     <td>
-                        <img class="card-img-top" src="{{ f.profile.url }}" alt="Card image" style="width: 30%">
+                        <img class="card-img-top rounded" src="{{ f.profile.url }}" alt="Card image" style="width: 30%">
                     </td>
                   {% else %}
                     <td>
-                        <img class="card-img-top" src="{% static 'images/naga.jpg' %}" alt="Card image" style="width: 20%">
+                        <img class="card-img-top rounded" src="{% static 'images/naga.jpg' %}" alt="Card image" style="width: 20%">
                     </td>
                   {% endif %}
                 <p class="card-text" style="font-size: 16px">
