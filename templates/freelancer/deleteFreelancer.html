@@ -4,7 +4,7 @@
 {% block content %}
 
     {% if user.is_authenticated %}
-    {% if user == free.myUser %}
+    {% if user == free.myUser or user.is_superuser %}
 
     <form class="=" method="post">
         {% csrf_token %}
